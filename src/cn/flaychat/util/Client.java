@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * 用于模拟HTTP请求中GET/POST方式
  * 
@@ -165,20 +166,6 @@ public class Client {
 		}
 		return result;
 	}
-	/**
-	 * 主函数，测试请求
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Map<String, String> parameters = new HashMap<String, String>();
-		
-		String result = sendPost("http://localhost:8080/FlayChat/Test",
-				parameters);
-		System.out.println(result);
-	}
 
-	
-	
 }
 

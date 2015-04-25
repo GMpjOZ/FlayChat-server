@@ -14,7 +14,10 @@ public class User {
 	private int age;
 	private String email;
 	private int sex;
-	private int phone_number;
+	private String phone_number;
+	private double latitude;//纬度
+	private double longitude;//经度
+	
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -22,6 +25,18 @@ public class User {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	public String getName() {
 		return name;
@@ -47,10 +62,10 @@ public class User {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public int getPhone_number() {
+	public String getPhone_number() {
 		return phone_number;
 	}
-	public void setPhone_number(int phone_number) {
+	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
 	

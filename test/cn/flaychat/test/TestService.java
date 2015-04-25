@@ -26,7 +26,7 @@ public class TestService {
 		Session session = sessionFactory.getCurrentSession();
 
 		User u=new User();
-		u.setName("pk");
+		u.setName("pl");
 		session.save(u);
 	
 	}
