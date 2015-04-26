@@ -16,14 +16,22 @@
 
 
 
-	<!-- 自动扫描与装配bean -->
-	<context:component-scan base-package="cn.flaychat"></context:component-scan>
-
 
 	<!-- 导入外部的properties配置文件 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 
+<!-- 配置自动扫描的包,忽略Controller -->
+	<context:component-scan base-package="cn.flaychat"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	
+	</context:component-scan>
 
+	<!-- 自动装配 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
 	<!-- 配置数据库连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- =========== 数据库连接信息 =========== -->

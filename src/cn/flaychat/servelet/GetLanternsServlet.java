@@ -11,21 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.flaychat.model.Lanterns;
+import cn.flaychat.service.LanternsServer;
 import cn.flaychat.service.LocationServer;
 import cn.flaychat.util.GsonUtil;
 
 /**
- * Servlet implementation class PostLocationServlet
+ * Servlet implementation class GetLanternsServlet
  */
-@WebServlet("/PostLocationServlet")
-public class PostLocationServlet extends HttpServlet {
+@WebServlet("/GetLanternsServlet")
+public class GetLanternsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-	 private LocationServer ls=(LocationServer) ac.getBean("locationServer");
+	 private LanternsServer lans=(LanternsServer) ac.getBean("lanternsServer"); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostLocationServlet() {
+    public GetLanternsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +37,10 @@ public class PostLocationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Lanterns lan=lans.getLanterns();
+		GsonUtil.packGson(lan, 200,"请求成功", response);
+		System.out.println(lan);
+		
 	}
 
 	/**
@@ -42,14 +48,6 @@ public class PostLocationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-	double latitude=Double.parseDouble(request.getParameter("latitude"));
-	double longitude=Double.parseDouble(request.getParameter("longitude"));
-	int id=Integer.parseInt(request.getParameter("id"));
-	
-	ls.saveLocation(latitude, longitude, id);
-	GsonUtil.packGsonList(null, 200, " 发送成功", response);
-	
 	}
 
 }

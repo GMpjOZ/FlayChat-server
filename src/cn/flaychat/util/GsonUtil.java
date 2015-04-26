@@ -14,7 +14,7 @@ import com.google.gson.JsonArray;
 
 public class GsonUtil {
 
-	public static <T> boolean packGson(Class<T> clz,int status,String message,HttpServletResponse response){
+	public static <T> boolean packGson(T clz,int status,String message,HttpServletResponse response){
 		 		Gson mGson=new Gson();
 				PrintWriter out;
 				try {
